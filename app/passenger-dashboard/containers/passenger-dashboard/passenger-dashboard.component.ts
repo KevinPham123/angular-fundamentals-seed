@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, Output, EventEmitter, OnInit } from "@angular/core";
 
 import { Passenger} from '../../models/passenger.interface';
 
@@ -15,7 +15,9 @@ import { Passenger} from '../../models/passenger.interface';
 
             <passenger-detail
                 *ngFor = "let passenger of passengers;"
-                [detail]="passenger">
+                [detail]="passenger"
+                (edit)= "handleEdit($event)"
+                (remove)="handleRemove($event)">
             </passenger-detail>
 
         
@@ -29,7 +31,6 @@ export class PassengerDashboardComponent implements OnInit {
     passengers: Passenger[];
       constructor() {}
       ngOnInit(){
-          console.log('ngOnInit');
           this.passengers =  [{
             id:1,
             fullname: 'Stephn',
@@ -62,5 +63,12 @@ export class PassengerDashboardComponent implements OnInit {
             children: null
             
       }];
+
+    }
+    handleEdit(event){
+        console.log(event);
+    }
+    handleRemove(event){
+        console.log(event);
     }
 }
