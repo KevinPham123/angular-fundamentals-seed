@@ -7,36 +7,18 @@ import { Passenger} from '../../models/passenger.interface';
     selector: 'passenger-dashboard',
     styleUrls: ['passenger-dashboard.component.scss'],
     template: `
-
-        <passenger-count
-            [items] = "passengers">
-
-        </passenger-count>
-
-        <passenger-detail>
-        </passenger-detail>
-
         <div>
-        <h3> Airline Passengers </h3>
-      <ul>
-        <li *ngFor = "let passenger of passengers; let i = index;">
-          <span 
-            class = "status" 
-            [class.checked-in] = "passenger.checkedIn"></span>
-            {{ i }}: {{ passenger.fullname }}
-            
-              <div class = "date">
-                Check in date: 
-                {{ passenger.checkInDate ? (passenger.checkIndate| date: 'yMMMMd'): 'Not checked in' }}
-              </div>
+            <passenger-count
+                [items] = "passengers">
 
-              <div class = "children">
-                Children: {{ passenger.children?.length || 0 }}
-              </div>
+            </passenger-count>
 
-           
-        </li>
-      </ul>
+            <passenger-detail
+                *ngFor = "let passenger of passengers;"
+                [detail]="passenger">
+            </passenger-detail>
+
+        
         </div>
     
     `
