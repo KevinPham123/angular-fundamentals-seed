@@ -15,14 +15,20 @@ const PASSENGER_API: string = '/api/passengers';
 @Injectable()
 export class PassengerDashboardService {
     constructor(private http: Http) {
-      console.log(this.http);
+      
     }
     
-    getPassengers(): Observable<Passenger[]> {
+    getPassenger(id: number): Observable<Passenger> {
         return this.http
-        .get(PASSENGER_API)
+        .get(`${PASSENGER_API}/${id}`)
         .map((response: Response) => response.json())
         .catch((error: any) => Observable.throw(error.json()));    }
+
+    getPassengers(): Observable<Passenger[]> {
+          return this.http
+          .get(PASSENGER_API)
+          .map((response: Response) => response.json())
+          .catch((error: any) => Observable.throw(error.json()));    }    
 
     updatePassenger(passenger: Passenger): Observable<Passenger> {
       let headers = new Headers({
