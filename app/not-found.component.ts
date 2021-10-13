@@ -4,9 +4,11 @@ import { Component } from "@angular/core";
     selector: 'not-found',
     template: `
     <div>
-        Not found!
+        Not found!, <a routerlink="/">go home</a>?
     </div>
     `
 })
 
-export class NotFoundComponent{}
+export class NotFoundComponent{
+
+}
