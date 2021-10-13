@@ -30,7 +30,7 @@ const routes: Routes=[
     CommonModule,
     // custom module
     PassengerDashboardModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, { useHash: true})
   ],
   bootstrap: [AppComponent]
 })
